@@ -27,7 +27,7 @@ export const Route = createFileRoute("/api/chat")({
         const result = streamText({
           model: gateway("openai/gpt-6-astra"),
           system: SYSTEM_PROMPT,
-          messages: convertToModelMessages(body.messages as UIMessage[]),
+          messages: await convertToModelMessages(body.messages as UIMessage[]),
           providerOptions: {
             openai: { reasoningEffort: "low" },
           },
